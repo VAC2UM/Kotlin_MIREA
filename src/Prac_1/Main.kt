@@ -27,22 +27,28 @@ class ExpenseManager {
         }
         return categoryTotals
     }
+
+    fun displayTotalByCategory(totalsByCategory: Map<String, Double>) {
+        println("Total Expenses by Category:")
+        for ((category, total) in totalsByCategory) {
+            println("$category: $total")
+        }
+    }
 }
 
 fun main() {
     val expenseManager = ExpenseManager()
 
-    expenseManager.addExpense(Expense(100.0, "Food", "2023-10-01"))
-    expenseManager.addExpense(Expense(50.0, "Transport", "2023-10-02"))
-    expenseManager.addExpense(Expense(200.0, "Food", "2023-10-03"))
-    expenseManager.addExpense(Expense(75.0, "Entertainment", "2023-10-04"))
+    expenseManager.addExpense(Expense(150.0, "Groceries", "2023-11-01"))
+    expenseManager.addExpense(Expense(30.0, "Utilities", "2023-11-02"))
+    expenseManager.addExpense(Expense(80.0, "Groceries", "2023-11-03"))
+    expenseManager.addExpense(Expense(45.0, "Entertainment", "2023-11-04"))
+    expenseManager.addExpense(Expense(20.0, "Utilities", "2023-11-05"))
 
     println("All Expenses:")
     expenseManager.displayAllExpenses()
 
-    println("\nTotal Expenses by Category:")
+    println()
     val totalsByCategory = expenseManager.calculateTotalByCategory()
-    for ((category, total) in totalsByCategory) {
-        println("$category: $total")
-    }
+    expenseManager.displayTotalByCategory(totalsByCategory)
 }
